@@ -14,3 +14,21 @@
   sess = tf.Session()
   print(sess.run(hello))
   ```
+
+#### Run tensorboard
+
+- `tensorboard --logdir=path/to/logs`
+
+- In Jupyter notes
+
+  ```python
+  import tensorflow as tf
+  summary = tf.summary.scalar("foo", 42.0)
+
+  with tf.Session() as session:
+      writer = tf.summary.FileWriter("path/to/logs", session.graph)
+      summaries = session.run(summary)
+      writer.add_summary(summaries, 1)
+      writer.close()
+  ```
+- Navigate to `https://localhost:6006 to see the graph
